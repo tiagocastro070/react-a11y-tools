@@ -21,9 +21,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm test
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
 
   deploy:
     name: Deploy to GitHub Pages
@@ -72,7 +72,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm run semantic-release
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn build --if-present
+      - run: yarn semantic-release
