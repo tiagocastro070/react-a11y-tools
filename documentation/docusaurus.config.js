@@ -35,11 +35,20 @@ const config = {
   plugins: [() => ({
     name: 'resolve-react',
     configureWebpack() {
+      const NODE_MODULES = path.join(__dirname, '../node_modules');
+      const REACT = `${NODE_MODULES}/react`;
+      const REACT_DOM = `${NODE_MODULES}/react-dom`;
+
+      console.log({
+        react: REACT,
+        reactDOM: REACT_DOM
+      });
+
       return {
         resolve: {
           alias: {
-            // assuming root node_modules is up from "./packages/<your-docusaurus>
-            react: path.resolve('../node_modules/react'),
+            react: path.resolve(REACT),
+            "react-dom": path.resolve(REACT_DOM),
           },
         },
       };

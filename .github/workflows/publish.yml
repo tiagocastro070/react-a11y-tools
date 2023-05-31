@@ -34,13 +34,13 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16.x
           cache: yarn
 
-      - name: Install dependencies
-        run: yarn documentation:install
+      - name: Install project and docusaurus dependencies
+        run: yarn install --frozen-lockfile && yarn documentation:install
       - name: Build website
-        run: yarn build
+        run: yarn documentation:build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
@@ -74,5 +74,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: yarn build --if-present
+      - run: yarn build
       - run: yarn semantic-release
