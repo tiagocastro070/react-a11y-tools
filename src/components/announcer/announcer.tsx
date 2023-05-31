@@ -73,8 +73,6 @@ export const Announcer = ({
 		return <p>{message}</p>;
 	}
 
-	console.log;
-
 	return (
 		<div
 			id={id}

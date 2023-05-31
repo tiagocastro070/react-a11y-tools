@@ -39,11 +39,6 @@ const config = {
       const REACT = `${NODE_MODULES}/react`;
       const REACT_DOM = `${NODE_MODULES}/react-dom`;
 
-      console.log({
-        react: REACT,
-        reactDOM: REACT_DOM
-      });
-
       return {
         resolve: {
           alias: {
