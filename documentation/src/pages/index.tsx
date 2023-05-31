@@ -67,7 +67,7 @@ export default function Home() {
 							</svg>
 						</span>
 					</Link>
-					<p id="on-a-new-tab">This link opens on a new tab</p>
+					<p className="sr-only" id="on-a-new-tab">This link opens on a new tab</p>
 					<a
 						className={clsx(styles.link, styles.github)}
 						href={siteConfig.customFields?.["githubLink"] as string ?? ""}
