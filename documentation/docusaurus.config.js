@@ -11,7 +11,7 @@ const PACKAGE_URL = "https://www.npmjs.com/package/@jtmdias/react-a11y-tools/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: "react-a11y-tools",
+	title: "Accessibility Tools for React",
 	tagline: "Focus on Accessible Web experiences",
   favicon: 'img/favicon.ico',
 
