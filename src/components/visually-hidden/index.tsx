@@ -76,3 +76,5 @@ export const VisuallyHidden = <GenericElement extends React.ElementType = "span"
 		</Component>
 	);
 };
+
+VisuallyHidden.displayName = "VisuallyHidden";

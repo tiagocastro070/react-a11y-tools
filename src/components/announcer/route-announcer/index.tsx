@@ -6,7 +6,7 @@
  */
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { usePrevious } from "@jtmdias/js-utilities";
-import { Announcer } from "../announcer";
+import { Announcer } from "../components/announcer";
 
 export interface IRouteAnnouncerActions {
 	/**
@@ -144,3 +144,5 @@ export const RouteAnnouncer: FunctionComponent<IRouteAnnouncerProps> = ({
 		</div>
 	);
 };
+
+RouteAnnouncer.displayName = "RouteAnnouncer";

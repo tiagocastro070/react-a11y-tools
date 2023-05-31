@@ -10,9 +10,13 @@ export type UseDisableEventReturns = (event: React.SyntheticEvent) => void;
 /**
  * Disables an event bubbling up on a DOM element
  *
- * @export
- * @param {boolean} [disabled]
- * @returns {UseDisableEventReturns}
+ * @example
+ *
+ * ```jsx
+ * import { useDisableEvent } from "@jtmdias/react-a11y-tools";
+ * ...
+ * const onClickCapture = useDisableEvent(htmlProps.disabled);
+ * ```
  */
 export function useDisableEvent(disabled?: boolean): UseDisableEventReturns {
 	return useCallback(

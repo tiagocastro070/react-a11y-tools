@@ -57,6 +57,7 @@ export const SkipLink: FunctionComponent<ISkipLink> = ({ target, text, as }) => 
 	);
 };
 
+SkipLink.displayName = "SkipLink";
 SkipLink.defaultProps = SKIP_LINK_DEFAULT_PROPS;
 
 export default SkipLink;

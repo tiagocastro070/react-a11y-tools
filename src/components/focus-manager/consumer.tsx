@@ -53,3 +53,5 @@ export function FocusManagerConsumer({
 }) {
 	return <FocusContext.Consumer>{(context) => children(context)}</FocusContext.Consumer>;
 }
+
+FocusManagerConsumer.displayName = "FocusManagerConsumer";

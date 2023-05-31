@@ -44,3 +44,5 @@ export function MessagesAnnouncerConsumer({
 		</MessagesAnnouncerContext.Consumer>
 	);
 }
+
+MessagesAnnouncerConsumer.displayName = "MessagesAnnouncerConsumer";

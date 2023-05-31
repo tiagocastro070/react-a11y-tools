@@ -33,3 +33,5 @@ export function RoverConsumer({
 		</RoverContext.Consumer>
 	);
 }
+
+RoverConsumer.displayName = "RoverConsumer";

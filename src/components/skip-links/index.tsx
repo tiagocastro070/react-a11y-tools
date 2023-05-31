@@ -53,4 +53,5 @@ export const SkipLinks: FunctionComponent<ISkipLinksProps> = ({ items }) => {
 	return renderLinks();
 };
 
+SkipLinks.displayName = "SkipLinks";
 SkipLinks.defaultProps = SKIP_LINK_ITEMS_DEFAULT_PROPS;

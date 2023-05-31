@@ -38,3 +38,5 @@ export function Provider({ children, direction = "vertical" }: IRoverProviderPro
 
 	return <RoverContext.Provider value={value}>{children}</RoverContext.Provider>;
 }
+
+Provider.displayName = "RoverProvider";

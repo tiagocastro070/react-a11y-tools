@@ -22,3 +22,5 @@ export const RoverContext = createContext<RovingContext>({
 	},
 	dispatch: emptyFunction,
 });
+
+RoverContext.displayName = "RoverContext";

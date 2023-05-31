@@ -5,7 +5,7 @@
  * (c) 2023 joaodias.me, Rights Reserved.
  */
 import React, { FunctionComponent, useReducer } from "react";
-import { Announcer } from "../announcer";
+import { Announcer } from "../components/announcer";
 import { defaultState, MessagesAnnouncerContext } from "./context";
 import { AnnouncementReducerState } from "./index";
 
@@ -67,3 +67,5 @@ export const MessagesAnnouncer: FunctionComponent = ({ children }) => {
 		</MessagesAnnouncerContext.Provider>
 	);
 };
+
+MessagesAnnouncer.displayName = "MessagesAnnouncer";

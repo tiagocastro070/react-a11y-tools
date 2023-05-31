@@ -87,6 +87,8 @@ function getDisabledState(disabled?: boolean, focusable?: boolean): TabRelatedAt
 *
 * @example
 * ```jsx
+* import { useTabbable } from "@jtmdias/react-a11y-tools";
+* ...
 *	function Component({ disabled, onClick, ...componentProps }) {
 *		const tabbableProps = useTabbable({
 *			...componentProps,

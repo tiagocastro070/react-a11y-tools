@@ -491,5 +491,7 @@ export const FocusManager: FunctionComponent<IFocusManagerProps> = ({
 	);
 };
 
+FocusManager.displayName = "FocusManager";
+
 export * from "./useFocusManager";
 export * from "./consumer";

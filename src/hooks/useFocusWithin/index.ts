@@ -13,10 +13,22 @@ import { UseFocusWithinProps, UseFocusWithinReturns } from "./types";
 
 /**
  * Handles focus events for the target and its descendants.
- *
- * @export
- * @param {UseFocusWithinProps} { onBlurWithin, onFocusWithin, onFocusWithinChange }
- * @returns {UseFocusWithinReturns}
+*
+* @example
+* ```jsx
+* import { useFocusWithin } from "@jtmdias/react-a11y-tools";
+* ...
+*	function Component({ disabled, onClick, ...componentProps }) {
+*		const focusWithinProps = useFocusWithin({
+*			onFocusWithin: yourCallbackForFocus.
+*			onBlurWithin: yourCallbackForBlur.
+* 	});
+*
+*		return (
+*			<button type="button" {...focusWithinProps}>A Button</button>
+*		):
+* }
+* ```
  */
 export function useFocusWithin({ onBlurWithin, onFocusWithin, onFocusWithinChange }: UseFocusWithinProps): UseFocusWithinReturns {
 	const state = useRef({

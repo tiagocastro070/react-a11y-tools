@@ -236,10 +236,23 @@ function isKeyboardFocusEvent(
 
 /**
  * Manages focus visible state for the page, and subscribes individual components for updates.
- *
- * @export
- * @param {FocusVisibleProps} [props={}]
- * @returns {FocusVisibleResult}
+*
+* @example
+* ```jsx
+* import { toggleDataAttribute } from "@jtmdias/js-utilities";
+* import { useFocusVisible} from "@jtmdias/react-a11y-tools";
+* ...
+*	function Component({ disabled, onClick, ...componentProps }) {
+*		const { isFocusVisible } = useFocusWithin({
+*			isTextInput: false,
+*			autoFocus: false,
+* 	});
+*
+*		return (
+*			<button type="button" data-focus-visible={toggleDataAttribute(isFocusVisible)}>A Button</button>
+*		):
+* }
+* ```
  */
 export function useFocusVisible(props: FocusVisibleProps = {}): FocusVisibleResult {
 	const { isTextInput, autoFocus } = props;

@@ -74,6 +74,8 @@ export function Level({ dangerouslySetHeadingLevel, children }: PropsWithChildre
 	return <HeadingsContext.Provider value={value}>{children}</HeadingsContext.Provider>;
 }
 
+Level.displayName = "Level";
+
 /**
  * Renders a heading HTML element (h1...h6) base on the number and depth of `Level`'s.
  *
@@ -105,5 +107,7 @@ export const Heading = forwardRef(
 		return createElement(HeadingLevel, elementProps, children);
 	},
 );
+
+Heading.displayName = "Heading";
 
 export * from "./useHeadings";

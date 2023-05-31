@@ -26,7 +26,8 @@ const generateIncrementalId = () => ++id;
  * consistent values for SSR.
  *
  * @example
- *
+ * ```jsx
+ * import { useAutoId } from "@jtmdias/react-a11y-tools";
  * // Generating an id (no pre-defined id and no prefix)
  * const id1 = useAutoId(); // will return, for example, "0"
  *
@@ -38,7 +39,7 @@ const generateIncrementalId = () => ++id;
  *
  * // Using a prefix with a pre-defined id
  * const id4 = useAutoId("6949d175", "js-checkbox") // will return "js-checkbox--6949d175"
- *
+ * ```
  * @param {string | null | undefined} customId - You can pass an previously defined value
  * and that value will be used as the value of the returned id.
  * @param {string | undefined} prefix - If necessary, you can prepend a generated id with a prefix.
