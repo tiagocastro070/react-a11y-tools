@@ -1,9 +1,16 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 
 export default function Home() {
+	const { siteConfig } = useDocusaurusContext();
+
+	const HEADING_TITLE = `${siteConfig.organizationName}/${siteConfig.projectName}`;
+	const CURRENT_VERSION = `${siteConfig.customFields?.["currentVersion"]}`;
+	const VERSION_TITLE = `Current version is ${CURRENT_VERSION}`;
+
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>
@@ -29,7 +36,7 @@ export default function Home() {
 							d="M62.322 32.824c0-16.612-13.468-30.079-30.081-30.079-16.612 0-30.081 13.467-30.081 30.079 0 16.614 13.469 30.08 30.08 30.08 16.614 0 30.081-13.467 30.081-30.08v0z"
 						></path>
 					</svg>
-					<h1 className={styles.header__title}>@jtmdias/react-a11y-tools/</h1>
+					<h1 className={styles.header__title}>{HEADING_TITLE}<span className={styles.header__title__version} title={VERSION_TITLE}><span className="sr-only">Currently version: </span>{CURRENT_VERSION}</span></h1>
 				</div>
 			</header>
 			<main className={styles["main-content"]}>
@@ -42,7 +49,7 @@ export default function Home() {
 				</p>
 				<nav className={styles.page__nav}>
 					<Link className={clsx(styles.link, styles["link--primary"])} to="/docs/getting-started">
-						<span className={styles.link__text}>Get Started</span>
+						<span className={styles.link__text}>{siteConfig.customFields?.["mainButton"]}</span>
 						<span className={styles.link__icon}>
 							<svg
 								stroke="currentColor"
@@ -60,9 +67,11 @@ export default function Home() {
 							</svg>
 						</span>
 					</Link>
+					<p id="on-a-new-tab">This link opens on a new tab</p>
 					<a
 						className={clsx(styles.link, styles.github)}
-						href="https://github.com/joaotmdias/react-a11y-tools/"
+						href={siteConfig.customFields?.["githubLink"] as string ?? ""}
+						aria-describedby="on-a-new-tab"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -82,11 +91,12 @@ export default function Home() {
 								<path d="M16 5.343c-6.196 0-11.219 5.023-11.219 11.219 0 4.957 3.214 9.162 7.673 10.645 0.561 0.103 0.766-0.244 0.766-0.54 0-0.267-0.010-1.152-0.016-2.088-3.12 0.678-3.779-1.323-3.779-1.323-0.511-1.296-1.246-1.641-1.246-1.641-1.020-0.696 0.077-0.682 0.077-0.682 1.126 0.078 1.72 1.156 1.72 1.156 1.001 1.715 2.627 1.219 3.265 0.931 0.102-0.723 0.392-1.219 0.712-1.498-2.49-0.283-5.11-1.246-5.11-5.545 0-1.226 0.438-2.225 1.154-3.011-0.114-0.285-0.501-1.426 0.111-2.97 0 0 0.941-0.301 3.085 1.15 0.894-0.25 1.854-0.373 2.807-0.377 0.953 0.004 1.913 0.129 2.809 0.379 2.14-1.453 3.083-1.15 3.083-1.15 0.613 1.545 0.227 2.685 0.112 2.969 0.719 0.785 1.153 1.785 1.153 3.011 0 4.31-2.624 5.259-5.123 5.537 0.404 0.348 0.761 1.030 0.761 2.076 0 1.5-0.015 2.709-0.015 3.079 0 0.299 0.204 0.648 0.772 0.538 4.455-1.486 7.666-5.69 7.666-10.645 0-6.195-5.023-11.219-11.219-11.219z"></path>
 							</svg>
 						</span>
-						<span className={styles.link__text}>Code on Github</span>
+						<span className={styles.link__text}>{siteConfig.customFields?.["githubLabel"]}</span>
 					</a>
 					<a
 						className={clsx(styles.link, styles.npm)}
-						href="https://www.npmjs.com/package/@jtmdias/react-a11y-tools/"
+						href={siteConfig.customFields?.["packageLink"] as string ?? ""}
+						aria-describedby="on-a-new-tab"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -106,7 +116,7 @@ export default function Home() {
 								/>
 							</svg>
 						</span>
-						<span className={styles.link__text}>Package on NPM</span>
+						<span className={styles.link__text}>{siteConfig.customFields?.["packageLabel"]}</span>
 					</a>
 				</nav>
 			</main>
@@ -114,7 +124,7 @@ export default function Home() {
 				<p>
 					Open-source library built by
 					<a href="https://joaodias.me" target="_blank" rel="noopener noreferrer">
-						&nbsp;João Dias
+						&nbsp;{siteConfig.customFields?.["author"]}
 					</a>
 				</p>
 			</footer>

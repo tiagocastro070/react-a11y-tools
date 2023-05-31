@@ -4,12 +4,26 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const path = require('path');
+const packageJSON = require("../package.json");
+
+const REPO_URL = "https://github.com/joaotmdias/react-a11y-tools/";
+const PACKAGE_URL = "https://www.npmjs.com/package/@jtmdias/react-a11y-tools/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: "react-a11y-tools",
 	tagline: "Focus on Accessible Web experiences",
   favicon: 'img/favicon.ico',
+
+  customFields: {
+    currentVersion: packageJSON.version,
+    mainButton: "Documentation",
+    githubLink: REPO_URL,
+    githubLabel: "Code on Github",
+    packageLink: PACKAGE_URL,
+    packageLabel: "Package on NPM",
+    author: packageJSON.author,
+  },
 
   // Set the production url of your site here
 	url: "https://joaotmdias.github.io",
@@ -99,12 +113,12 @@ const config = {
         },
 				items: [
 					{
-						href: "https://www.npmjs.com/package/@jtmdias/react-a11y-tools/",
+						href: PACKAGE_URL,
 						label: "NPM",
 						position: "right",
 					},
 					{
-						href: "https://github.com/joaotmdias/react-a11y-tools/",
+						href: REPO_URL,
 						label: "GitHub",
 						position: "right",
 					},
