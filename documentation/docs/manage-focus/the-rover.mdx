@@ -19,7 +19,7 @@ import { Subtitle, BrowserWindow, PropsTable } from "../../src/components/index"
 - Then, use the `ArrowUp` and `ArrowDown` keys to go through each option.
 - Try pressing `Home` or `End` to jump right to the first or last elements on the group.
 - Press `tab` (or `shift+tab`) again to exit.
-:::
+  :::
 
 ### Development Instructions
 
@@ -58,7 +58,7 @@ For each one of those, wrap them with your own component and use the `useRover` 
 const MenuButton = ({ disabled = false, children }) => {
 	const buttonRef = useRef(null);
 
-	const [tabIndex, focused, handleKeyDown, handleClick] = useRover(buttonRef, disabled);
+	const [tabIndex, focused, handleKeyDown, handleClick] = useRover(buttonRef, { disabled });
 
 	useFocus(focused, buttonRef);
 

@@ -7,7 +7,7 @@
 import { useRef, useCallback, useContext, RefObject, KeyboardEvent } from "react";
 import { useSafeLayoutEffect } from "../../hooks/index";
 import { RoverContext } from "./rover-provider/context";
-import { RovingContext, TKeyDirection } from "./index";
+import { IuseRoverOptions, RovingContext, TKeyDirection } from "./index";
 
 let counter = 0;
 
@@ -72,14 +72,13 @@ function getDirection<GenericType>(
  */
 export function useRover<GenericType>(
 	domElementRef: RefObject<GenericType | any>,
-	disabled?: boolean,
-	id?: string,
+	options?: IuseRoverOptions,
 ): [number, boolean, (event: KeyboardEvent<GenericType | any>) => void, () => void, RovingContext] {
-	const tabIndexId = useRef(id || uniqueId("react-a11y-tools-rover-index_"));
+	const tabIndexId = useRef(options?.id || uniqueId("react-a11y-tools-rover-index_"));
 	const context = useContext(RoverContext);
 
 	useSafeLayoutEffect(() => {
-		if (disabled) {
+		if (options?.disabled) {
 			return;
 		}
 
@@ -97,7 +96,7 @@ export function useRover<GenericType>(
 				payload: { id },
 			});
 		};
-	}, [disabled]);
+	}, [options?.disabled]);
 
 	/**
 	 * Handles the `KeyPress` events inside the context
@@ -107,8 +106,15 @@ export function useRover<GenericType>(
 	const handleOnKeyPress = useCallback(
 		(event: KeyboardEvent<GenericType | any>) => {
 			const payload = { id: tabIndexId.current };
+			const direction = getDirection(event, context.state.direction);
+			const isDirectionKeyPressed = direction === "PREVIOUS" || direction === "NEXT";
 
-			switch (getDirection(event, context.state.direction)) {
+			// Avoid preventing the default behaviour if other key is pressed
+			if (options?.lockScrollOnRover && isDirectionKeyPressed) {
+				event.preventDefault();
+			}
+
+			switch (direction) {
 				case "PREVIOUS":
 					context.dispatch({
 						type: "TAB_TO_PREVIOUS",
@@ -129,13 +135,13 @@ export function useRover<GenericType>(
 
 			switch (event.key) {
 				case "Home":
-					context.dispatch({ type: "TAB_TO_FIRST" });
 					event.preventDefault();
+					context.dispatch({ type: "TAB_TO_FIRST" });
 					break;
 
 				case "End":
-					context.dispatch({ type: "TAB_TO_LAST" });
 					event.preventDefault();
+					context.dispatch({ type: "TAB_TO_LAST" });
 					break;
 
 				default:
@@ -152,7 +158,7 @@ export function useRover<GenericType>(
 		});
 	}, [context.dispatch]);
 
-	const selected = !disabled && tabIndexId.current === context.state.selectedId;
+	const selected = !options?.disabled && tabIndexId.current === context.state.selectedId;
 	const tabIndex = selected ? 0 : -1;
 	const focused = selected && context.state.lastActionOrigin !== null;
 

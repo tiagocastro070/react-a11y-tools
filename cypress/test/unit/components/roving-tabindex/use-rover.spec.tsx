@@ -16,7 +16,10 @@ const TestButton: React.FC<{
 	id?: string;
 }> = ({ disabled, children, id }) => {
 	const ref = React.useRef(null);
-	const [tabIndex, focused, handleKeyDown, handleClick] = useRover(ref, disabled);
+	const [tabIndex, focused, handleKeyDown, handleClick] = useRover(ref, {
+		disabled,
+		lockScrollOnRover: true,
+	});
 	useFocus(ref, focused);
 	return (
 		<button

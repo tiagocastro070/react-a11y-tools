@@ -60,6 +60,12 @@ export interface IRovingAction<Action> {
 	type: Action;
 }
 
+export interface IuseRoverOptions {
+	disabled?: boolean;
+	id?: string;
+	lockScrollOnRover?: boolean;
+}
+
 export type RovingAction =
 	| IRovingActionWithPayload<"REGISTER", TabStop>
 	| IRovingActionWithPayload<"UNREGISTER", IRovingActionPayloadID>
@@ -77,7 +83,7 @@ export type RovingContext = {
 };
 
 export { Provider as RoverProvider } from "./rover-provider/provider";
-export { RoverConsumer } from "./rover-provider/consumer"
-export { RoverContext } from "./rover-provider/context"
+export { RoverConsumer } from "./rover-provider/consumer";
+export { RoverContext } from "./rover-provider/context";
 export * from "./use-rover";
 export * from "./use-focus-effect";
